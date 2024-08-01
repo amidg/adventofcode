@@ -11,11 +11,11 @@ int main(int argc, char* argv[]) {
     std::string line; 
     while (std::getline(file, line)) {
         gifts.push_back(Gift(line));
+        //std::cout << gifts.back().get_text_entry() << std::endl;
     }
 
-    for (auto gift : gifts) {
+    for (auto& gift : gifts)
         total_area += gift.get_gift_area();
-    }
 
     std::cout << "Total Area: " << total_area << std::endl;
 
