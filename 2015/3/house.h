@@ -5,8 +5,14 @@
 
 class House {
 public:
-    House(int x, int y) { pos = std::make_pair(x, y); };
-    explicit House(const std::pair<int, int>& xy) { pos = xy; };
+    House(int x, int y) {
+        pos = std::make_pair(x, y);
+        gifts = 1;
+    };
+    explicit House(const std::pair<int, int>& xy) {
+        pos = xy;
+        gifts = 1;
+    };
     friend inline bool operator==(const House& lhs, const House& rhs) {
         return lhs.pos.first == rhs.pos.first && lhs.pos.second == rhs.pos.second;
     }
