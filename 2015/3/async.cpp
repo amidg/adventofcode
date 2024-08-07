@@ -52,7 +52,7 @@ void move_santa() {
         std::unique_lock<std::mutex> lock(mtx);
         cv.wait(lock, []{ return done || (idx % 2 == 0); });
         if (done) break;
-        std::cout << "santa @ " << idx << std::endl;
+        //std::cout << "santa @ " << idx << std::endl;
         calculate_move(santa_xy, commands[idx]);
         calculate_house(santa_xy);
         ++idx;
@@ -66,7 +66,7 @@ void move_robot() {
         std::unique_lock<std::mutex> lock(mtx);
         cv.wait(lock, []{ return done || (idx % 2 == 1); });
         if (done) break;
-        std::cout << "robot @ " << idx << std::endl;
+        //std::cout << "robot @ " << idx << std::endl;
         calculate_move(robot_xy, commands[idx]);
         calculate_house(robot_xy);
         ++idx;
