@@ -14,48 +14,43 @@ int main() {
     House temp(santa_xy);
     std::vector<House>::iterator found_house;
     houses.push_back(temp); // automatically add 1 gift
-    //houses.begin()->add_gift(); // add 1 gift for the robot
+    houses.begin()->add_gift(); // add 1 gift for the robot
     bool is_even = false;
     for (int i = 0; i < commands.size(); i++) {
         // read command
         is_even = i%2==0;
         switch (commands[i]) {
             case NORTH:
-                ++santa_xy.second;
-                //if (is_even)
-                //    ++santa_xy.second;
-                //else
-                //    ++robot_xy.second;
+                if (is_even)
+                    ++santa_xy.second;
+                else
+                    ++robot_xy.second;
                 break;
             case SOUTH:
-                --santa_xy.second;
-                //if (is_even)
-                //    --santa_xy.second;
-                //else
-                //    --robot_xy.second;
+                if (is_even)
+                    --santa_xy.second;
+                else
+                    --robot_xy.second;
                 break;
             case EAST:
-                ++santa_xy.first;
-                //if (is_even)
-                //    ++santa_xy.first;
-                //else
-                //    ++robot_xy.first;
+                if (is_even)
+                    ++santa_xy.first;
+                else
+                    ++robot_xy.first;
                 break;
             case WEST:
-                --santa_xy.first;
-                //if (is_even)
-                //    --santa_xy.first;
-                //else
-                //    --robot_xy.first;
+                if (is_even)
+                    --santa_xy.first;
+                else
+                    --robot_xy.first;
                 break;
         }
 
         // add house
-        temp.apply_coordinates(santa_xy);
-        //if (is_even)
-        //    temp.apply_coordinates(santa_xy);
-        //else
-        //    temp.apply_coordinates(robot_xy);
+        if (is_even)
+            temp.apply_coordinates(santa_xy);
+        else
+            temp.apply_coordinates(robot_xy);
         if ( (found_house = std::find(houses.begin(), houses.end(), temp)) != houses.end()) {
             found_house->add_gift();
         } else {
